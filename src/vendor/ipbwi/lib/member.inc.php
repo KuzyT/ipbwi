@@ -976,7 +976,7 @@
 		}
 		/**
 		 * @desc			Login a user without checking the credentials. Use this function with care!
-		 * @param	string	$userName Member's Username
+		 * @param	string	$userName Member's Username - KuzyT - Судя по всему, тут ID
 		 * @param	bool	$cookie Default: true=Use cookie to save login session, false=no cookies
 		 * @return	bool	true on success, otherwise false
 		 * @author			Matthias Reuter
@@ -1095,6 +1095,22 @@
 				return false;
 			}
 		}
+
+		/**
+		 * @desc			Кодируем строку - для формата IPB, того же пароля
+		 * @return	bool	true on success, otherwise false
+		 * @author			Matthias Reuter
+		 * @sample
+		 * <code>
+		 * $ipbwi->member->logout();
+		 * </code>
+		 * @since			2.0
+		 */
+		public function parseCleanValue($pw){
+			return \IPSText::parseCleanValue( urldecode($pw));
+		}
+
+
 		/**
 		 * @desc			Logout a user.
 		 * @return	bool	true on success, otherwise false
