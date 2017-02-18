@@ -171,12 +171,12 @@
 		 * </code>
 		 * @since			2.0
 		 */
-		public function avatarUrl($userID = false){
+		public function avatarUrl($userID = false, $big = true){
 			// No Member ID specified? Go for the current users UID.
 			$member = $this->info($userID);
 			$photo	= \IPSMember::buildProfilePhoto($member);
 
-			return $photo['pp_thumb_photo'];
+			return $big ? $photo['pp_thumb_photo'] : $photo['pp_thumb_photo'];
 		}
 
 		/**
