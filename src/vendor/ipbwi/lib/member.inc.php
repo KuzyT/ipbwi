@@ -159,6 +159,26 @@
 			$avatar = \IPSMember::buildAvatar($member);
 			return $avatar;
 		}
+
+		/**
+		 * @desc			Returns the HTML code to show a member's avatar.
+		 * @param	int		$userID User ID. If $userID is ommited, the last known member id is used.
+		 * @return	string	Url for member's avatar, or false on failure
+		 * @author			KuzyT
+		 * @sample
+		 * <code>
+		 * $ipbwi->member->avatarUrl(5);
+		 * </code>
+		 * @since			2.0
+		 */
+		public function avatarUrl($userID = false){
+			// No Member ID specified? Go for the current users UID.
+			$member = $this->info($userID);
+			$photo	= \IPSMember::buildProfilePhoto($member);
+
+			return $photo['pp_thumb_photo'];
+		}
+
 		/**
 		 * @desc			Returns HTML code for member's photo.
 		 * @param	int		$userID User ID. If $userID is ommited, the last known member id is used.
